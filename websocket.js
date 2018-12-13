@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>WebSocket Test</title>
-<!--<script type="text/javascript" src="/websocket.js"></script>-->
-
-<script type="text/javascript">
-
-var socket
+﻿var socket
 
 function connect()
 {
 	setText("connecting...");
 	//socket = new WebSocket(getBaseURL() + "/pingpong");
-	socket = new WebSocket("ws://103.40.18.6:9007/pingpong");
-	//socket = new WebSocket("ws://127.0.0.1:9007/pingpong");
+	socket = new WebSocket("ws://103.40.18.6:9005/pingpong");
 	socket.onopen = function() {
 		setText("connected. waiting for timer...");
 	}
@@ -45,15 +36,3 @@ function getBaseURL()
 	var idx = href.indexOf("/");
 	return "ws://" + href.substring(0, idx);
 }
-
-	
-</script>
-
-<style>pre#timer {border: 1px solid black;}
-</style>
-</head>
-<body onload="connect()">
-	<p>The following box should show a running counter, updated by the server:</p>
-	<pre id="timer"></pre><button type="button" onclick="closeConnection()">Close connection</button>
-</body>
-</html>
